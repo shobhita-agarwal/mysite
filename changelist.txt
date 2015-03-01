@@ -1,0 +1,18 @@
+1) in C:\Bitnami\wampstack-5.4.37-0\apache2\htdocs\osclass\oc-content\themes\bender:
+	-header.php : added search bar for all pages, deleted "publish your ad for free" link
+
+
+2) Remove the contact publisher : in item-sidebar.php , backup exists
+3) Remove the mark as spam etc : in item-sidebar.php, backup exists
+4) Improve the search functionality : Done , without any change , add location in description
+5) Find a good theme : done for now
+6) Understand the concept of location very well : done for now
+7) Design a logo : designed and placed in admin/images
+
+TODO :-
+
+2) In maps , enable right click get direction
+3) Think about letting users add venues...should we allow it ?
+4) Add cache : easy
+5) launch
+6) Prepare design plan for booking engine
