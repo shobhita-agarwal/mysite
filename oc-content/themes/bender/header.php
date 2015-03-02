@@ -65,7 +65,7 @@
 	
 	<?php if( osc_is_home_page()) { ?>
 	<div class="headermiddle">
-		Which game do you want to play this weekend?
+		Which game do you want to play today?
 	</div>
 	<?php } ?>
 	
