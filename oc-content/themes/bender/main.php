@@ -77,7 +77,7 @@
                 <li><a href="<?php echo osc_list_region_url(); ?>"><?php echo osc_list_region_name() ; ?> <em>(<?php echo osc_list_region_items() ; ?>)</em></a>
 					<ul>
 						<?php while(osc_has_list_cities(osc_list_region_name())  ) { ?>
-							<li><a href="<?php echo osc_list_city_url(); ?>"><?php echo "|- " . osc_list_city_name() ; ?> <em>(<?php echo osc_list_city_items() ; ?>)</em></a>
+							<li><a href="<?php echo osc_list_city_url(); ?>"><?php echo "|-> " . osc_list_city_name() ; ?> <em>(<?php echo osc_list_city_items() ; ?>)</em></a>
 						<?php } ?>
 					</ul>
 				</li>				
