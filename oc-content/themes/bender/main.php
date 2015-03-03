@@ -71,10 +71,16 @@
     <div class="widget-box">
         <?php if(osc_count_list_regions() > 0 ) { ?>
         <div class="box location">
-            <h3><strong><?php _e("Cities", 'bender') ; ?></strong></h3>
+            <h3><strong><?php _e("Locations", 'bender') ; ?></strong></h3>
             <ul>
             <?php while(osc_has_list_regions() ) { ?>
-                <li><a href="<?php echo osc_list_region_url(); ?>"><?php echo osc_list_region_name() ; ?> <em>(<?php echo osc_list_region_items() ; ?>)</em></a></li>
+                <li><a href="<?php echo osc_list_region_url(); ?>"><?php echo osc_list_region_name() ; ?> <em>(<?php echo osc_list_region_items() ; ?>)</em></a>
+					<ul>
+						<?php while(osc_has_list_cities(osc_list_region_name())  ) { ?>
+							<li><a href="<?php echo osc_list_city_url(); ?>"><?php echo "|- " . osc_list_city_name() ; ?> <em>(<?php echo osc_list_city_items() ; ?>)</em></a>
+						<?php } ?>
+					</ul>
+				</li>				
             <?php } ?>
             </ul>
         </div>
