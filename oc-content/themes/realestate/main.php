@@ -20,9 +20,10 @@
      */
 ?>
         <?php osc_current_web_theme_path('header.php') ; ?>
+		
         <div id="main">
             <div id="">
-			<h2><?php _e("We find, <span>You play!</span>", 'realestate');?></h2>
+			<h2><?php _e("Which game do you wish to play today?", 'realestate');?></h2>
                 <div class="categories">
                     <?php osc_goto_first_category() ; ?>
                     <?php while ( osc_has_categories() ) { ?>
@@ -30,8 +31,7 @@
                     <?php } ?>
                     <div class="clear"></div>
                </div>
-            </div>
-			<hr/>
+				<hr/>
            <div id="premium-stage">
                 <?php if( osc_count_latest_items() == 0) { ?>
                     <p class="empty"><?php _e('No Latest venues', 'realestate') ; ?></p>
@@ -61,8 +61,8 @@
                                 </div>
                                 <div class="data"><?php item_realestate_attributes(); ?></div>
                                 <div class="author">
-                                    <?php echo osc_format_date(osc_item_pub_date()); ?><br />
-                                    <?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)
+									<?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)<br/>
+                                    <?php echo osc_item_city_area(); ?><br />                        
                                 </div>
                             </div>
                         </div>

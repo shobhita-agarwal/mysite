@@ -193,18 +193,24 @@
                 </div>
             </div>
             <div id="right-side">
+			
                 <div class="ui-actionbox ui-actionbox-mini mark-as">
                     <span class="action-title"><?php _e('Mark as', 'realestate') ; ?></span>
                     <a id="item_spam" href="<?php echo osc_item_link_spam() ; ?>" rel="nofollow"><?php _e('spam', 'realestate') ; ?></a>
                     <a id="item_bad_category" href="<?php echo osc_item_link_bad_category() ; ?>" rel="nofollow"><?php _e('misclassified', 'realestate') ; ?></a>
                     <a id="item_repeated" href="<?php echo osc_item_link_repeated() ; ?>" rel="nofollow"><?php _e('duplicated', 'realestate') ; ?></a>
                 </div>
-				<?php watchlist(); ?>
+				
                 <div class="ui-content-box details-box">
+				<div class="has-icon phone">
+					
+				</div>
+				
                     <?php
                 if( osc_price_enabled_at_items() ) { 
                     echo '<div class="price">'.osc_item_formated_price().'</div>';
                 }
+				
                 if ( osc_item_country() != "" ||  osc_item_region() != '') {
                     echo '<div class="has-icon"><div class="ico-location ico"></div>';
                     if ( osc_item_region() != "" ) {
@@ -227,6 +233,7 @@
                 }
                 //echo join(', ',$regionData);
                 ?>
+				
                 <div class="has-icon location">
                     <div><?php echo osc_item_city_area() .", ".osc_item_city() .", ".osc_item_region() ; ?></div>
                 </div>
@@ -238,7 +245,7 @@
 			<?php if( osc_count_items() > 0 ) { ?>
 			<div class = "ui-content-box">
 			<div class="similar_ads">
-				<h2><?php _e('Similar venues', 'bender'); ?></h2>
+				<h2><?php _e('Similar venues', 'realestate'); ?></h2>
 				<?php
 				View::newInstance()->_exportVariableToView("listType", 'items');
 				osc_current_web_theme_path('loop.php');
@@ -248,6 +255,25 @@
 			</div>
 			<?php } ?>
 			
+			<div class="ui-content-box">
+					<?php if(osc_count_list_regions() > 0 ) { ?>
+					<div class="box location">
+						<h3><strong><?php _e("Locations", 'realestate') ; ?></strong></h3>
+						<ul>
+						<?php while(osc_has_list_regions() ) { ?>
+							<li><a href="<?php echo osc_list_region_url(); ?>"><?php echo osc_list_region_name() ; ?> </a>
+								<ul>
+									<?php while(osc_has_list_cities(osc_list_region_name())  ) { ?>
+										<li><a href="<?php echo osc_list_city_url(); ?>"><?php echo  osc_list_city_name() ; ?> <em>(<?php echo osc_list_city_items() ; ?>)</em></a>
+									<?php } ?>
+								</ul>
+							</li>				
+						<?php } ?>
+						</ul>
+					</div>
+					<?php } ?>
+				</div>
+            </div>
             <div class="clear"></div>
         </div>
         <?php osc_current_web_theme_path('footer.php') ; ?>

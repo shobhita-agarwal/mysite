@@ -103,13 +103,23 @@
         </ul>
         
         <div class="empty"></div>
+		<div class="locality-menu ui-actionbox" >
+			<?php if(osc_count_list_regions() > 0 ) { ?>
+			<div class="box location">
+				<span class="action-title"><?php _e('Find all venues in:', 'realestate') ; ?></span>				
+				<?php while(osc_has_list_regions() ) { ?>
+					<a href="<?php echo osc_list_region_url(); ?>"><?php echo osc_list_region_name() ; ?></a>				
+				<?php } ?>
+				
+			</div>
+			<?php } ?>
+		</div>
     </div>
 	
 			<?php if(1) { ?>
 				<form action="<?php echo osc_base_url(true); ?>" method="get" class="main-search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*/ ?>>
 					<input type="hidden" name="page" value="search"/>
 					<div id="search_header" style="width:100%;padding-top:50px; padding-left:20%;">
-						
 							<input class="ui-input-text" style="width:500px;" type="text" name="sPattern" id="query" class="input-text" value="" placeholder="<?php echo osc_esc_html(__(osc_get_preference('keyword_placeholder', 'bender_theme'), 'bender')); ?>" />
 							<button class="ui-button ui-button-big" style="padding:0px 0px 0px 0px; height:30px"><?php _e("Go", 'realestate');?></button>
 						
@@ -117,6 +127,7 @@
 					<div id="message-seach"></div>
 				</form>
 			<?php } ?>
+			
     <div id="header-shadow"></div>
 </div>
 	
