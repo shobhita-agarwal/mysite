@@ -164,19 +164,19 @@
                 <?php ItemForm::country_select(osc_get_countries(), osc_user()) ; ?>
             </div>
             <div class="row ui-row-text">
-                <label for="regionId"><?php _e('Region', 'realestate'); ?></label>
+                <label for="regionId"><?php _e('City', 'realestate'); ?></label>
                 <?php ItemForm::region_text(osc_user()) ; ?>
             </div>
             <div class="row ui-row-text">
-                <label for="city"><?php _e('City', 'realestate'); ?></label>
+                <label for="city"><?php _e('Locality', 'realestate'); ?></label>
                 <?php ItemForm::city_text(osc_user()) ; ?>
             </div>
             <div class="row ui-row-text">
-                <label for="city"><?php _e('City Area', 'realestate'); ?></label>
+                <label for="city"><?php _e('Address', 'realestate'); ?></label>
                 <?php ItemForm::city_area_text(osc_user()) ; ?>
             </div>
             <div class="row ui-row-text">
-                <label for="address"><?php _e('Address', 'realestate'); ?></label>
+                <label for="address"><?php _e('Map search string', 'realestate'); ?></label>
                 <?php ItemForm::address_text(osc_user()) ; ?>
             </div>
         </div>
