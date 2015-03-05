@@ -32,6 +32,7 @@
     osc_add_hook('header','itemCustomHead');
 ?>
         <?php osc_current_web_theme_path('header.php') ; ?>
+		
         <div class="content-item">
             <div id="item-head">
                 <h1><?php echo osc_item_title(); ?></h1>
@@ -198,7 +199,7 @@
                     <a id="item_bad_category" href="<?php echo osc_item_link_bad_category() ; ?>" rel="nofollow"><?php _e('misclassified', 'realestate') ; ?></a>
                     <a id="item_repeated" href="<?php echo osc_item_link_repeated() ; ?>" rel="nofollow"><?php _e('duplicated', 'realestate') ; ?></a>
                 </div>
-				
+				<?php watchlist(); ?>
                 <div class="ui-content-box details-box">
                     <?php
                 if( osc_price_enabled_at_items() ) { 
@@ -237,7 +238,7 @@
 			<?php if( osc_count_items() > 0 ) { ?>
 			<div class = "ui-content-box">
 			<div class="similar_ads">
-				<h2><?php _e('Related venues', 'bender'); ?></h2>
+				<h2><?php _e('Similar venues', 'bender'); ?></h2>
 				<?php
 				View::newInstance()->_exportVariableToView("listType", 'items');
 				osc_current_web_theme_path('loop.php');

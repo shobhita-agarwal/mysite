@@ -98,14 +98,27 @@
                     </ul>
                 </li>
             <?php } ?>
+			
             <div class="clear"></div>
         </ul>
         
         <div class="empty"></div>
     </div>
+	
+			<?php if(!osc_is_home_page()) { ?>
+				<form action="<?php echo osc_base_url(true); ?>" method="get" class="main-search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*/ ?>>
+					<input type="hidden" name="page" value="search"/>
+					<div id="search_header" style="width:100%;padding-top:50px; padding-left:20%;">
+						
+							<input class="ui-input-text" style="width:500px;" type="text" name="sPattern" id="query" class="input-text" value="" placeholder="<?php echo osc_esc_html(__(osc_get_preference('keyword_placeholder', 'bender_theme'), 'bender')); ?>" />
+							<button class="ui-button ui-button-big" style="padding:0px 0px 0px 0px; height:30px"><?php _e("Go", 'realestate');?></button>
+						
+					</div>
+					<div id="message-seach"></div>
+				</form>
+			<?php } ?>
     <div id="header-shadow"></div>
 </div>
-
 	
 	
 <!-- /header -->
