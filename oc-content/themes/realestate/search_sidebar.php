@@ -10,10 +10,10 @@
             <fieldset class="box location">
                 <label><?php _e('Your search', 'realestate'); ?></label>
                 <div class="row one_input">
-                    <div class="has-placeholder"><span id="search-placeholder"><?php echo osc_get_preference('keyword_placeholder','realestate') ; ?></span><input type="text" name="sPattern" id="query"  class="ui-input-text" value="<?php echo Params::getParam('sPattern'); ?>" /></div>
+                    <div class="has-placeholder"><span id="search-placeholder"><?php echo osc_get_preference('keyword_placeholder_','realestate') ; ?></span><input type="text" name="sPattern" id="query"  class="ui-input-text" value="<?php echo Params::getParam('sPattern'); ?>" /></div>
                 </div>
                 <div id="message-seach"></div>
-                <label><?php _e('City', 'realestate'); ?></label>
+                <label><?php _e('Locality', 'realestate'); ?></label>
                 <input type="text" id="sCity" name="sCity" value="<?php echo osc_search_city() ; ?>" class="ui-input-text"/>
             </fieldset>
 

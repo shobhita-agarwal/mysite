@@ -105,7 +105,7 @@
         <div class="empty"></div>
     </div>
 	
-			<?php if(!osc_is_home_page()) { ?>
+			<?php if(1) { ?>
 				<form action="<?php echo osc_base_url(true); ?>" method="get" class="main-search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*/ ?>>
 					<input type="hidden" name="page" value="search"/>
 					<div id="search_header" style="width:100%;padding-top:50px; padding-left:20%;">

@@ -21,12 +21,8 @@
 ?>
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div id="main">
-            <div id="home-search">
-                <form action="<?php echo osc_base_url(true) ; ?>" method="get" class="search" onsubmit="javascript:return doSearch();">
-                    <input type="hidden" name="page" value="search" />
-                    <h2><?php _e("We find, <span>You play!</span>", 'realestate');?></h2>
-                    <div class="has-placeholder"><span id="search-placeholder"><?php _e("Search anything", 'realestate'); ?></span><input type="text" name="sPattern" id="query" class="input-text js-input-home" value="" /><a href="#" class="ui-button ui-button-big js-submit"><?php _e("Search", 'realestate');?></a><div id="message-seach"></div></div>
-                </form>
+            <div id="">
+			<h2><?php _e("We find, <span>You play!</span>", 'realestate');?></h2>
                 <div class="categories">
                     <?php osc_goto_first_category() ; ?>
                     <?php while ( osc_has_categories() ) { ?>
@@ -35,6 +31,7 @@
                     <div class="clear"></div>
                </div>
             </div>
+			<hr/>
            <div id="premium-stage">
                 <?php if( osc_count_latest_items() == 0) { ?>
                     <p class="empty"><?php _e('No Latest venues', 'realestate') ; ?></p>
