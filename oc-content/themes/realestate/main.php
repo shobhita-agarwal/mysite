@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="data"><?php item_realestate_attributes(); ?></div>
                                 <div class="author">
-                                    <?php echo osc_format_date(osc_item_pub_date()); ?><br />
+                                    <?php //echo osc_format_date(osc_item_pub_date()); ?><br />
                                     <?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
             </div>
             <?php if( osc_count_latest_items() == osc_max_latest_items() ) { ?>
                 <div class="pagination-box">
-                    <a href="<?php echo osc_search_show_all_url();?>" class="ui-button ui-button-grey"><?php _e("See all offers", 'realestate'); ?> &raquo;</a></p>
+                    <a href="<?php echo osc_search_show_all_url();?>" class="ui-button ui-button-grey"><?php _e("See all Venues", 'realestate'); ?> &raquo;</a></p>
                 </div>
             <?php } ?>
         </div>

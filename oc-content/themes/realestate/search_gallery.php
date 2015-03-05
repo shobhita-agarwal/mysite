@@ -44,7 +44,7 @@
                     </div>
                     <div class="data"><?php item_realestate_attributes(); ?></div>
                     <div class="author">
-                        <?php echo osc_format_date(osc_premium_pub_date()); ?><br />
+                        <?php //echo osc_format_date(osc_premium_pub_date()); ?><br />
                         <?php echo osc_premium_city(); ?> (<?php echo osc_premium_region();?>)
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="data"><?php item_realestate_attributes(); ?></div>
                     <div class="author">
-                        <?php echo osc_format_date(osc_item_pub_date()); ?><br />
+                        <?php //echo osc_format_date(osc_item_pub_date()); ?><br />
                         <?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)
                     </div>
                 </div>
