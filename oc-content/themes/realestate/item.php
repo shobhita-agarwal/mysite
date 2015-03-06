@@ -93,13 +93,6 @@
 
 
                             <p class="contact_button">
-                                <?php if( !osc_item_is_expired () ) { ?>
-                                <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
-                                    <?php     if(osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ) { ?>
-                                        <strong><a href="#contact" class="ui-button"><?php _e('Contact seller', 'realestate') ; ?></a></strong>
-                                    <?php     } ?>
-                                <?php     } ?>
-                                <?php } ?>
                                 <strong class="share"><a href="<?php echo osc_item_send_friend_url() ; ?>" rel="nofollow" class="ui-button"><?php _e('Share', 'realestate') ; ?></a></strong>
                             </p>
                         </td>
