@@ -1,0 +1,113 @@
+#wrapper_voting_plugin{
+    padding: 5px;
+}
+
+.votes_txt_vote {
+    display: inline;
+    float: left;
+}
+
+.votes_results {
+    display: inline;
+    float: left;
+}
+
+.votes_results img {
+    height: auto;
+    margin-top: -1px;
+    margin-left: -2px;
+    vertical-align: middle;
+    width: auto;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+#voting_plugin {
+    position: relative;
+}
+#voting_plugin p {
+    font-size: 14px;
+}
+
+/* wp rate stars */
+
+div.star-holder {
+    display: inline-block;
+    position: relative;
+    height: 17px;
+    width: 92px;
+    background: url("../img/stars.png") repeat-x bottom left;
+}
+
+div.star-holder .star-rating {
+    background: url("../img/stars.png") repeat-x top left;
+    height: 17px;
+    float: left;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+div.star-holder.rate .star-rate {
+    position: absolute;
+}
+
+div.star-holder.rate:hover .star-rating {
+    display: none;
+}
+
+div.star-holder .star-rate a {
+    background: none;
+    height: 17px;
+    width: 19px;
+    float: right;
+}
+
+div.star-holder .star-rate a:first-child {
+    width: 16px;
+}
+
+div.star-holder .star-rate a:hover ~ a,
+div.star-holder .star-rate a:hover {
+    background: url("../img/stars.png") no-repeat top left;
+}t
+.voting-review-table {
+    text-align: left;
+}
+
+
+
+.voting-review-table textarea{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    width: 100%;
+    height: 12em;
+}
+.voting-review-table {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.voting-review-table input[type='text'] {
+    padding: 4px 2px;
+}
+.voting-review-table td{
+    line-height: 20px;
+    border-bottom-width: 8px;
+    border-bottom-style: solid;
+}
+.voting-review-table th{
+    text-align: left;
+    padding: 0px;
+    margin:0px;
+    width: 150px;
+    font-weight: bold;
+    border-bottom-width: 8px;
+    border-bottom-style: solid;
+}
+.voting-review-table td,
+.voting-review-table th{
+    border-bottom-color: #fff;
+}
