@@ -33,9 +33,9 @@
 ?>
         <?php osc_current_web_theme_path('header.php') ; ?>
 		
-        <div class="content-item" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+        <div class="content-item">
             <div id="item-head">
-                <h1 itemprop="itemreviewed"><?php echo osc_item_title(); ?></h1>
+                <h1><?php echo osc_item_title(); ?></h1>
                 <div id="type_dates">
                     <strong><?php echo osc_item_category() ; ?></strong>
                 </div>
@@ -54,7 +54,7 @@
                                     <?php
                                     for ( $i = 0; osc_has_item_resources() ; $i++ ) { ?>
                                         <li>
-                                            <a href="<?php echo osc_resource_url(); ?>"><img itemprop="photo" src="<?php echo osc_resource_thumbnail_url(); ?>"></a>
+                                            <a href="<?php echo osc_resource_url(); ?>"><img src="<?php echo osc_resource_thumbnail_url(); ?>"></a>
                                         </li>
                                     <?php } ?>
                                     </ul>
@@ -92,7 +92,7 @@
                             </div>
 
 
-                            <p class="contact_button">             
+                            <p class="contact_button">
                                 <strong class="share"><a href="<?php echo osc_item_send_friend_url() ; ?>" rel="nofollow" class="ui-button"><?php _e('Share', 'realestate') ; ?></a></strong>
                             </p>
                         </td>
@@ -123,10 +123,6 @@
                         
                     </div>
                     <!-- plugins -->
-               
-                    
-                    
-                    
                     <?php if( osc_comments_enabled() ) { ?>
                         <?php if( osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ) { ?>
                         <div id="comments">
@@ -199,7 +195,9 @@
                 </div>
 				
                 <div class="ui-content-box details-box">
-				
+				<div class="has-icon phone">
+					
+				</div>
 				
                     <?php
                 if( osc_price_enabled_at_items() ) { 
@@ -235,9 +233,6 @@
                 
             </div>
 			
-			<div class="ui-content-box">
-			<?php voting_item_detail(); ?>
-			</div>
 			
 			<?php related_listings(); ?>
 			<?php if( osc_count_items() > 0 ) { ?>
