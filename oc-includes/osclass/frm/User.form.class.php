@@ -109,7 +109,7 @@
 
         static public function region_select($regions, $user = null) {
             if( count($regions) >= 1 ) {
-                parent::generic_select('regionId', $regions, 'pk_i_id', 's_name', __('Select a region...'), (isset($user['fk_i_region_id'])) ? $user['fk_i_region_id'] : null);
+                parent::generic_select('regionId', $regions, 'pk_i_id', 's_name', __('Select a city...'), (isset($user['fk_i_region_id'])) ? $user['fk_i_region_id'] : null);
             } else {
                 parent::generic_input_text('region', (isset($user['s_region'])) ? $user['s_region'] : null);
             }
@@ -121,7 +121,7 @@
 
         static public function city_select($cities, $user = null) {
             if( count($cities) >= 1 ) {
-                parent::generic_select('cityId', $cities, 'pk_i_id', 's_name', __('Select a city...'), (isset($user['fk_i_city_id'])) ? $user['fk_i_city_id'] : null);
+                parent::generic_select('cityId', $cities, 'pk_i_id', 's_name', __('Select a locality...'), (isset($user['fk_i_city_id'])) ? $user['fk_i_city_id'] : null);
             } else {
                 parent::generic_input_text('city', (isset($user['s_city'])) ? $user['s_city'] : null);
             }

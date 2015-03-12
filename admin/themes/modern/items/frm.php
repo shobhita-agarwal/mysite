@@ -228,15 +228,15 @@ function customPageHeader() { ?>
                                 <?php ItemForm::country_select(); ?>
                             </div>
                             <div class="input-has-placeholder input-separate-top">
-                                <label><?php _e('Region'); ?></label>
+                                <label><?php _e('City'); ?></label>
                                 <?php ItemForm::region_text(); ?>
                             </div>
                             <div class="input-has-placeholder input-separate-top">
-                                <label><?php _e('City'); ?></label>
+                                <label><?php _e('City Area'); ?></label>
                                 <?php ItemForm::city_text(); ?>
                             </div>
                             <div class="input-has-placeholder input-separate-top">
-                                <label><?php _e('City area'); ?></label>
+                                <label><?php _e('Street Address'); ?></label>
                                 <?php ItemForm::city_area_text(); ?>
                             </div>
                             <div class="input-has-placeholder input-separate-top">
@@ -244,7 +244,7 @@ function customPageHeader() { ?>
                                 <?php ItemForm::zip_text(); ?>
                             </div>
                             <div class="input-has-placeholder input-separate-top">
-                                <label><?php _e('Address'); ?></label>
+                                <label><?php _e('Map search string'); ?></label>
                                 <?php ItemForm::address_text(); ?>
                             </div>
                         </div>

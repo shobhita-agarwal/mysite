@@ -61,15 +61,15 @@
                             <?php UserForm::country_select(osc_get_countries(), osc_user()) ; ?>
                         </div>
                         <div class="row ui-row-text">
-                            <label for="region"><?php _e('Region', 'realestate') ; ?> *</label>
+                            <label for="region"><?php _e('City', 'realestate') ; ?> *</label>
                             <?php UserForm::region_select(osc_get_regions(), osc_user()) ; ?>
                         </div>
                         <div class="row ui-row-text">
-                            <label for="city"><?php _e('City', 'realestate') ; ?> *</label>
+                            <label for="city"><?php _e('City Area', 'realestate') ; ?> *</label>
                             <?php UserForm::city_select(osc_get_cities(), osc_user()) ; ?>
                         </div>
                         <div class="row ui-row-text">
-                            <label for="city_area"><?php _e('City area', 'realestate') ; ?></label>
+                            <label for="city_area"><?php _e('Street', 'realestate') ; ?></label>
                             <?php UserForm::city_area_text(osc_user()) ; ?>
                         </div>
                         <div class="row ui-row-text">
