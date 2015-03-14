@@ -139,7 +139,7 @@
                 ((!osc_validate_text($aItem['cityName'], 2, false)) ? _m("City too short.") . PHP_EOL : '' ) .
                 ((!osc_validate_max($aItem['cityName'], 50)) ? _m("City too long.") . PHP_EOL : '' ) .
                 ((!osc_validate_text($aItem['cityArea'], 2, false)) ? _m("Municipality too short.") . PHP_EOL : '' ) .
-                ((!osc_validate_max($aItem['cityArea'], 50)) ? _m("Municipality too long.") . PHP_EOL : '' ) .
+                ((!osc_validate_max($aItem['cityArea'], 100)) ? _m("Municipality too long.") . PHP_EOL : '' ) .
                 ((!osc_validate_text($aItem['address'], 3, false)) ? _m("Address too short.") . PHP_EOL : '' ) .
                 ((!osc_validate_max($aItem['address'], 100)) ? _m("Address too long.") . PHP_EOL : '' ) .
                 ((((time() - Session::newInstance()->_get('last_submit_item')) < osc_items_wait_time()) && !$this->is_admin) ? _m("Too fast. You should wait a little to publish your ad.") . PHP_EOL : '' );
@@ -340,14 +340,14 @@
                 ((!is_null($aItem['price']) && (int)$aItem['price']<0 ) ? _m('Price must be positive number.') . PHP_EOL : '' ) .
                 ((!osc_validate_text($aItem['countryName'], 3, false)) ? _m("Country too short.") . PHP_EOL : '' ) .
                 ((!osc_validate_max($aItem['countryName'], 50)) ? _m("Country too long.") . PHP_EOL : '' ) .
-                ((!osc_validate_text($aItem['regionName'], 2, false)) ? _m("Region too short.") . PHP_EOL : '' ) .
-                ((!osc_validate_max($aItem['regionName'], 50)) ? _m("Region too long.") . PHP_EOL : '' ) .
-                ((!osc_validate_text($aItem['cityName'], 2, false)) ? _m("City too short.") . PHP_EOL : '' ) .
-                ((!osc_validate_max($aItem['cityName'], 50)) ? _m("City too long.") . PHP_EOL : '' ) .
-                ((!osc_validate_text($aItem['cityArea'], 3, false)) ? _m("Municipality too short.") . PHP_EOL : '' ) .
-                ((!osc_validate_max($aItem['cityArea'], 50)) ? _m("Municipality too long.") . PHP_EOL : '' ) .
-                ((!osc_validate_text($aItem['address'], 3, false))? _m("Address too short.") . PHP_EOL : '' ) .
-                ((!osc_validate_max($aItem['address'], 100)) ? _m("Address too long.") . PHP_EOL : '' );
+                ((!osc_validate_text($aItem['regionName'], 2, false)) ? _m("City too short.") . PHP_EOL : '' ) .
+                ((!osc_validate_max($aItem['regionName'], 50)) ? _m("City too long.") . PHP_EOL : '' ) .
+                ((!osc_validate_text($aItem['cityName'], 2, false)) ? _m("City Area too short.") . PHP_EOL : '' ) .
+                ((!osc_validate_max($aItem['cityName'], 50)) ? _m("City Area too long.") . PHP_EOL : '' ) .
+                ((!osc_validate_text($aItem['cityArea'], 3, false)) ? _m("Address too short.") . PHP_EOL : '' ) .
+                ((!osc_validate_max($aItem['cityArea'], 50)) ? _m("Address too long.") . PHP_EOL : '' ) .
+                ((!osc_validate_text($aItem['address'], 3, false))? _m("Map search Address too short.") . PHP_EOL : '' ) .
+                ((!osc_validate_max($aItem['address'], 100)) ? _m("Map search Address too long.") . PHP_EOL : '' );
 
             $_meta = Field::newInstance()->findByCategory($aItem['catId']);
             $meta = Params::getParam("meta");

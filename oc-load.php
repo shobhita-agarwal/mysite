@@ -32,8 +32,7 @@ if( !file_exists(ABS_PATH . 'config.php') ) {
     require_once LIB_PATH . 'osclass/helpers/hErrors.php';
 
     $title   = 'Osclass &raquo; Error';
-    $message = 'There doesn\'t seem to be a <code>config.php</code> file. Osclass isn\'t installed. <a href="http://forums.osclass.org/">Need more help?</a></p>';
-    $message .= '<p><a class="button" href="' . osc_get_absolute_url() .'oc-includes/osclass/install.php">Install</a></p>';
+    $message = 'There doesn\'t seem to be a <code>config.php</code> file. Code isn\'t installed.';
     osc_die($title, $message);
 }
 
@@ -211,7 +210,7 @@ if( osc_timezone() != '' ) {
 function osc_show_maintenance() {
     if(defined('__OSC_MAINTENANCE__')) { ?>
         <div id="maintenance" name="maintenance">
-             <?php _e("The website is currently undergoing maintenance"); ?>
+             <?php _e("PlayTang is currently undergoing maintenance"); ?>
         </div>
         <style>
             #maintenance {
@@ -230,7 +229,7 @@ function osc_show_maintenance() {
     <?php }
 }
 function osc_meta_generator() {
-    echo '<meta name="generator" content="Osclass ' . OSCLASS_VERSION . '" />';
+    echo '<meta name="generator" content="PlayTang Software" />';
 }
 osc_add_hook('header', 'osc_show_maintenance');
 osc_add_hook('header', 'osc_meta_generator');
