@@ -38,7 +38,8 @@ osc_enqueue_style('style', osc_current_web_theme_styles_url('style.css'));
 
 <title><?php echo meta_title() ; ?></title>
 <meta name="title" content="<?php echo meta_title() ; ?>" />
-<meta name="description" content="<?php echo meta_description() ; ?>" />
+<meta name="keywords" content="Badminton , cricket , volleyball , football , swimming , gokarting clubs , sports lounges in Bangalore , Pune , Delhi , NCR , Hydrabad , Chennai , Kolkata">
+<meta name="description" content="Playtang is the best way to find sporting venues in your city. Want to play a quick match in the evening? Find out the nearest sports club only on Playtang. Find reviews and ratings of sports clubs on Playtang. Want to list a new venue with us? Feel free to contact us." />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Expires" content="Fri, Jan 01 1970 00:00:00 GMT" />
 
