@@ -116,7 +116,7 @@
 		</div>
     </div>
 	
-			<?php if(1) { ?>
+			<?php if(1) { #show search box?>
 				<form action="<?php echo osc_base_url(true); ?>" method="get" class="main-search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*/ ?>>
 					<input type="hidden" name="page" value="search"/>
 					<div id="search_header" style="width:100%;padding-top:50px; padding-left:20%;">

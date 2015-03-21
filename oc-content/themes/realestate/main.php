@@ -55,16 +55,26 @@
                                 <?php if( osc_price_enabled_at_items() ) { ?><div class="price"><?php echo osc_item_formated_price() ; ?></div> <?php } ?>
                                 </a>
                             </div>
-                            <div class="info">
-                                <div>
-                                    <h3><a href="<?php echo osc_item_url() ; ?>"><?php if(strlen(osc_item_title()) > 70){ echo substr(osc_item_title(), 0, 70).'...'; } else { echo osc_item_title(); } ?></a></h3>
-                                </div>
-                                <div class="data"><?php item_realestate_attributes(); ?></div>
-                                <div class="author">
-									<?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)<br/>
-                                    <?php echo osc_item_city_area(); ?><br />                        
-                                </div>
+							
+                            <div class="info" >
+								<div class = "prev" style="position:absolute;top:0;left:0; width:15px;">
+									<a style="color:grey;cursor:pointer" onclick="showPrev()">&lt </a>
+								</div>
+								<div style="padding-left: 15px; padding-right: 15px;">
+									<div>
+										<h3><a href="<?php echo osc_item_url() ; ?>"><?php if(strlen(osc_item_title()) > 70){ echo substr(osc_item_title(), 0, 70).'...'; } else { echo osc_item_title(); } ?></a></h3>
+									</div>
+									<div class="data"><?php item_realestate_attributes(); ?></div>
+									<div class="author">
+										<?php echo osc_item_city(); ?> (<?php echo osc_item_region();?>)<br/>
+										<?php echo osc_item_city_area(); ?><br />                        
+									</div>
+								</div>
+								<div class = "next" style="position:absolute;right:0;top:0">
+								<a style="color:grey;cursor:pointer" onclick="showNext()">&gt</a>
+							</div>
                             </div>
+							
                         </div>
                     <?php
                             $index++;
@@ -80,22 +90,21 @@
                 /* <![CDATA[ */
                 var slides = $("#premium-stage .ui-item:not(:last)").hide();
                 if(slides.length >= 1){
-                     slider = setInterval('showNext()',5000);
+                    slider = setInterval('showNext()',5000);
                 }
                 function showNext(){
                     $("#premium-stage .ui-item:last").prev().fadeIn(500);
                     $("#premium-stage .ui-item:last").fadeOut(500,function(){
                         $(this).remove().prependTo('#premium-stage');
                     });
-                    
                 }
-                function showSlide(el){
-                     clearInterval(slider);
-                     if('#'+$("#slider-stage .slider:last").attr('id') != el){
-                          $(el).remove().insertBefore("#slider-stage .slider:last");
-                          showNext();    
-                     }
+				function showPrev(){
+					$("#premium-stage .ui-item:last").fadeOut(500);
+                    $("#premium-stage .ui-item:first").fadeIn(500,function(){
+						$(this).remove().appendTo('#premium-stage');
+					});
                 }
+                
                 /* ]]> */
                 </script>
             </div>
