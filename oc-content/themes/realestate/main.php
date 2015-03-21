@@ -71,8 +71,8 @@
 									</div>
 								</div>
 								<div class = "next" style="position:absolute;right:0;top:0">
-								<a style="color:grey;cursor:pointer" onclick="showNext()">&gt</a>
-							</div>
+									<a style="color:grey;cursor:pointer" onclick="showNext()">&gt</a>
+								</div>
                             </div>
 							
                         </div>
