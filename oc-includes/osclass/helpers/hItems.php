@@ -968,6 +968,30 @@
         }
         return View::newInstance()->_next('comments');
     }
+	
+	/**
+     * Gets number of user comments of current user
+     *
+     * @return int
+     */
+    function osc_count_user_comments() {
+        if ( !View::newInstance()->_exists('comments') ) {
+            View::newInstance()->_exportVariableToView('comments', ItemComment::newInstance()->findByAuthorID( osc_logged_user_id(), osc_item_comments_page(), osc_comments_per_page() ) );
+        }
+        return View::newInstance()->_count('comments');
+    }
+
+    /**
+     * Gets next comment of current user comments
+     *
+     * @return array
+     */
+    function osc_has_user_comments() {
+        if ( !View::newInstance()->_exists('comments') ) {
+            View::newInstance()->_exportVariableToView('comments', ItemComment::newInstance()->findByAuthorID( osc_logged_user_id(), osc_item_comments_page(), osc_comments_per_page() ) );
+        }
+        return View::newInstance()->_next('comments');
+    }
 
     //////////
     // HOME //
