@@ -130,7 +130,7 @@
                     <?php if( osc_comments_enabled() ) { ?>
                         <?php if( osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ) { ?>
                         <div id="comments">
-                            <h2><?php _e('Comments', 'realestate'); ?></h2>
+                            <h2><?php _e('Reviews', 'realestate'); ?></h2>
                             <?php CommentForm::js_validation(); ?>
                             <?php if( osc_count_item_comments() >= 1 ) { ?>
                                 <div class="comments_list">
@@ -163,7 +163,6 @@
                             <?php } ?>
                             <form action="<?php echo osc_base_url(true) ; ?>" method="post" name="comment_form" id="comment_form" class="ui-generic-form">
                                 <fieldset>
-                                    <h3><?php _e('Leave your comment (spam and offensive messages will be removed)', 'realestate') ; ?></h3>
                                     <ul id="comment_error_list" class="error_list"></ul>
                                     <div class="ui-generic-form-content">
                                     <input type="hidden" name="action" value="add_comment" />
