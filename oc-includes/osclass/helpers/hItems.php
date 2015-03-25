@@ -739,6 +739,14 @@
         return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
 
+	/**
+     * Gets item id of current comment
+     *
+     * @return int
+     */
+    function osc_comment_item_id() {
+        return (int) osc_comment_field("fk_i_item_id");
+    }
     //////////////////////////////
     // END HELPERS FOR COMMENTS //
     //////////////////////////////
