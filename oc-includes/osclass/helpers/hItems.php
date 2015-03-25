@@ -738,6 +738,15 @@
     function osc_delete_comment_url() {
         return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
+	
+	/**
+     * Gets  link to delete the current comment of current item only for user dashboard
+     *
+     * @return string
+     */
+    function osc_delete_comment_url_user_dashboard($id) {
+        return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".$id."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
 
 	/**
      * Gets item id of current comment

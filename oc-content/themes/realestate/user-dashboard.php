@@ -58,7 +58,7 @@
                                             <h3><?php echo osc_comment_title() ; ?></h3>
                                             <p><?php echo osc_comment_body() ; ?> </p>
                                             <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
-                                            <p><a rel="nofollow" href="<?php echo osc_delete_comment_url(); ?>" title=
+                                            <p><a rel="nofollow" href="<?php echo osc_delete_comment_url_user_dashboard(osc_comment_item_id()); ?>" title=
 											"<?php _e('Delete your comment', 'realestate'); ?>"><?php _e('Delete', 'realestate'); ?></a></p>
                                             <?php } ?>
                                           </div>
