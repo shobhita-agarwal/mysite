@@ -22,48 +22,67 @@
 <?php osc_current_web_theme_path('header.php') ; ?>
 <div class="content user-area">
     <div id="right-side">
-        <h1><?php _e('User account manager', 'realestate') ; ?></h1>
-        <h2><?php echo sprintf(__('listings from %s', 'realestate') ,osc_logged_user_name()); ?></h2>
-        <div class="ad_list">
-            <?php if(osc_count_items() == 0) { ?>
-            <h3><?php _e('No listings have been added yet', 'realestate'); ?></h3>
-        <?php } else { ?>
-            <?php while(osc_has_items()) { ?>
-            <div class="ui-item ui-item-list">
-                <div class="frame">
-                    <a href="<?php echo osc_item_url() ; ?>"><?php if( osc_images_enabled_at_items() ) { ?>
-                        <?php if( osc_count_item_resources() ) { ?>
-                            <img src="<?php echo osc_resource_thumbnail_url() ; ?>" title="<?php echo osc_item_title(); ?>" alt="<?php echo osc_item_title(); ?>"/>
-                        <?php } else { ?>
-                            <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" alt="" title=""/>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <img src="<?php echo osc_current_web_theme_url('images/no_photo.gif') ; ?>" alt="" title=""/>
-                    <?php } ?>
-                    <div class="type"><?php echo osc_item_category(); ?></div>
-                    <?php if( osc_price_enabled_at_items() ) { ?><div class="price"><?php echo osc_item_formated_price() ; ?></div> <?php } ?>
-                    </a>
-                </div>
-                <div class="info">
-                    <div>
-                        <h3><a href="<?php echo osc_item_url() ; ?>"><?php if(strlen(osc_item_title()) > 31){ echo substr(osc_item_title(), 0, 28).'...'; } else { echo osc_item_title(); } ?></a></h3>
-                    </div>
-                    <div class="data data-full">
-                        <?php _e('Publication date', 'realestate') ; ?>: <?php echo osc_format_date(osc_item_pub_date()) ; ?><br />
-                        <div>
-                        <a href="<?php echo osc_item_url(); ?>" class="ui-button ui-button-grey ui-button-mini"><?php _e('View item', 'realestate'); ?></a>
-                        <a href="<?php echo osc_item_edit_url(); ?>" class="ui-button ui-button-grey ui-button-mini"><?php _e('Edit', 'realestate'); ?></a>
-                        <?php if(osc_item_is_inactive()) {?>
-                        <a href="<?php echo osc_item_activate_url();?>" class="ui-button ui-button-grey ui-button-mini"><?php _e('Activate', 'realestate'); ?></a>
-                        <?php } ?>
+        <h1><?php _e('Dashboard', 'realestate') ; ?></h1>
+               
+
+		<?php/* comment section*/?>
+		<div class="content-item ">
+                    <div id="description">                    
+                    <!-- plugins -->
+                    <?php if( osc_comments_enabled() ) { ?>
+                        <?php if( osc_reg_user_post_comments () && osc_is_web_user_logged_in() || !osc_reg_user_post_comments() ) { ?>
+                        <div id="comments">
+                            <h2><?php _e('Your Reviewed venues', 'realestate'); echo "(".osc_count_user_comments().")";?></h2>
+							<?php if( osc_count_user_comments() ==0 ) { ?>
+							<h3><?php _e('No Reviews have been posted yet', 'realestate'); ?></h3>
+							<?php }?>
+                           
+                            <?php if( osc_count_user_comments() > 0 ) { ?>
+                                <div class="comments_list">
+                                    <ul class="reviews-list">
+                                    <?php while ( osc_has_user_comments() ) { ?>
+                                        <li class="reviews-list-item">
+                                          <div class="profile_pic">
+                                              <img alt="James" src="<?php echo get_profile_image(osc_comment_author_email()); ?>" title="<?php echo osc_comment_author_name() ; ?>">
+                                              <?php echo osc_comment_author_name() ; ?>
+                                          </div>
+                                          <div class="message">
+										    <h2 class="item-heading">
+											<?php 
+											$item = (Item::newInstance()->findByPrimaryKey(osc_comment_item_id())); 
+											//print_r ($item);
+											$item_title = $item['s_title'].", " .$item['s_city'];
+											?>
+											<a href="<?php echo osc_item_url_ns(osc_comment_item_id()) ; ?>"><?php if(strlen($item_title) > 31){ 
+											echo substr($item_title, 0, 28).'...'; } else { echo $item_title; } ?></a></h2>
+                                            <h3><?php echo osc_comment_title() ; ?></h3>
+                                            <p><?php echo osc_comment_body() ; ?> </p>
+                                            <?php if ( osc_comment_user_id() && (osc_comment_user_id() == osc_logged_user_id()) ) { ?>
+                                            <p><a rel="nofollow" href="<?php echo osc_delete_comment_url_user_dashboard(osc_comment_item_id()); ?>" title=
+											"<?php _e('Delete your comment', 'realestate'); ?>"><?php _e('Delete', 'realestate'); ?></a></p>
+                                            <?php } ?>
+                                          </div>
+                                        </li>
+                                    <?php } ?>
+                                    </ul>
+                                    <div class="paginate" >
+                                        <?php if(osc_comments_pagination()){ ?>
+                                        <div class="ui-actionbox">
+                                            <?php echo osc_comments_pagination(); ?>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+
+                                </div>
+                            <?php } ?>
+                            
                         </div>
+                        <?php } ?>
+                    <?php } ?>
                     </div>
-                </div>
-            </div>
-            <?php } ?>
-        <?php } ?>
         </div>
-        
+		<?php /* end comment section*/?>	
+		
     </div>
     <?php require('user_sidebar.php') ; ?>
     <div class="clear"></div>

@@ -738,7 +738,24 @@
     function osc_delete_comment_url() {
         return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".osc_item_id()."&comment=".osc_comment_id()."&".osc_csrf_token_url();
     }
+	
+	/**
+     * Gets  link to delete the current comment of current item only for user dashboard
+     *
+     * @return string
+     */
+    function osc_delete_comment_url_user_dashboard($id) {
+        return (string) osc_base_url(true)."?page=item&action=delete_comment&id=".$id."&comment=".osc_comment_id()."&".osc_csrf_token_url();
+    }
 
+	/**
+     * Gets item id of current comment
+     *
+     * @return int
+     */
+    function osc_comment_item_id() {
+        return (int) osc_comment_field("fk_i_item_id");
+    }
     //////////////////////////////
     // END HELPERS FOR COMMENTS //
     //////////////////////////////
@@ -965,6 +982,30 @@
     function osc_has_item_comments() {
         if ( !View::newInstance()->_exists('comments') ) {
             View::newInstance()->_exportVariableToView('comments', ItemComment::newInstance()->findByItemID( osc_item_id(), osc_item_comments_page(), osc_comments_per_page() ) );
+        }
+        return View::newInstance()->_next('comments');
+    }
+	
+	/**
+     * Gets number of user comments of current user
+     *
+     * @return int
+     */
+    function osc_count_user_comments() {
+        if ( !View::newInstance()->_exists('comments') ) {
+            View::newInstance()->_exportVariableToView('comments', ItemComment::newInstance()->findByAuthorID( osc_logged_user_id(), osc_item_comments_page(), osc_comments_per_page() ) );
+        }
+        return View::newInstance()->_count('comments');
+    }
+
+    /**
+     * Gets next comment of current user comments
+     *
+     * @return array
+     */
+    function osc_has_user_comments() {
+        if ( !View::newInstance()->_exists('comments') ) {
+            View::newInstance()->_exportVariableToView('comments', ItemComment::newInstance()->findByAuthorID( osc_logged_user_id(), osc_item_comments_page(), osc_comments_per_page() ) );
         }
         return View::newInstance()->_next('comments');
     }

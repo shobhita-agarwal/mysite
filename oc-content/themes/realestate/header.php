@@ -63,6 +63,7 @@
                     </li>
                 <?php } else { ?>
                     <li class="first">
+					<?php fbc_button(); ?>
                         <a id="login_open" href="<?php echo osc_user_login_url(); ?>"><?php _e('Login', 'realestate') ; ?></a>
                         <?php if(osc_user_registration_enabled()) { ?>
                             &bull; <a href="<?php echo osc_register_account_url() ; ?>"><?php _e('Register for a free account', 'realestate'); ?></a>

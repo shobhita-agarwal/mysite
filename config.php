@@ -22,7 +22,7 @@ define('DB_TABLE_PREFIX', 'os_');
 
 define('REL_WEB_URL', '/mysite/');
 
-define('WEB_PATH', 'http://127.0.0.1/mysite/');
+define('WEB_PATH', 'http://localhost/mysite/');
 
 //define('OSC_DEBUG_DB' , true)
 

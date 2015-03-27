@@ -191,14 +191,27 @@
          * @param integer $id
          * @return array
          */
-        function findByAuthorID($id)
+        function findByAuthorID($id , $page = null, $commentsPerPage = null)
         {
+			$result = array();
+            if( $page == null ) { $page = osc_item_comments_page(); }
+            if( $page == '' ) {
+                $page = 0;
+            } else if($page > 0) {
+                $page = $page;
+            }
+
+            if( $commentsPerPage == null ) { $commentsPerPage = osc_comments_per_page(); }
+
             $this->dao->select();
             $this->dao->from($this->getTableName());
             $conditions = array('fk_i_user_id'  => $id,
                                 'b_active'      => 1,
                                 'b_enabled'     => 1);
             $this->dao->where($conditions);
+			if( $page !== 'all' && $commentsPerPage > 0 ) {
+                $this->dao->limit(($page*$commentsPerPage), $commentsPerPage);
+            }
             $result = $this->dao->get();
 
             if($result == false) {

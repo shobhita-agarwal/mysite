@@ -125,11 +125,28 @@
 
     if( !function_exists('get_gravatar') ) {
         function get_gravatar($email = null, $size = 65) {
+			$fb_user = OSCFacebook::newInstance()->getUser();
+			if($fb_user != 0)
+			{
+				return "https://graph.facebook.com/$fb_user/picture?width=$size";
+			}
             $email = md5( strtolower( trim( $email ) ) );
             $default = urlencode( osc_current_web_theme_url('images/avatar.png') );
             return "http://www.gravatar.com/avatar/$email?s=$size&d=$default";
         }
     }
+	
+	if( !function_exists('get_profile_image') ) {
+        function get_profile_image($size = 65) {
+			$fb_user = OSCFacebook::newInstance()->getUser();
+			if($fb_user != 0)
+			{
+				return "https://graph.facebook.com/$fb_user/picture?width=$size";
+			}
+            return get_gravatar(osc_logged_user_email() , $size);
+        }
+    }
+	
     if( !function_exists('logo_header') ) {
         function logo_header() {
 
