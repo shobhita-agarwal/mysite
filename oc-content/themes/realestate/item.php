@@ -163,6 +163,7 @@
                             <?php } ?>
                             <form action="<?php echo osc_base_url(true) ; ?>" method="post" name="comment_form" id="comment_form" class="ui-generic-form">
                                 <fieldset>
+									<h3><?php _e('Leave your review (spam and offensive messages will be removed)', 'realestate') ; ?></h3>
                                     <ul id="comment_error_list" class="error_list"></ul>
                                     <div class="ui-generic-form-content">
                                     <input type="hidden" name="action" value="add_comment" />
