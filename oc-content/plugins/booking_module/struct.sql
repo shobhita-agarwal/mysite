@@ -1,26 +1,21 @@
-CREATE TABLE /*TABLE_PREFIX*/t_venue_booking_slots (
-	pk_i_id BIGINT UNSIGNED NOT NULL,
-    fk_i_item_id INT UNSIGNED NOT NULL,
-    s_date DATE,
-    s_time_slot VARCHAR(25),
-	s_price SMALLINT,
-	s_quantity TINYINT,
-	s_available BOOLEAN DEFAULT 1,
+CREATE TABLE IF NOT EXISTS /*TABLE_PREFIX*/t_venue_booking_slots (
+  `pk_i_id` bigint(20) unsigned NOT NULL,
+  `fk_i_item_id` int(10) unsigned NOT NULL,
+  `s_date` date DEFAULT NULL,
+  `s_time_slot` varchar(25) DEFAULT NULL,
+  `s_price` smallint(6) DEFAULT NULL,
+  `s_court` varchar(25) DEFAULT NULL,
+  `s_available` tinyint(1) DEFAULT '1',
+  `s_booking_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `s_name` varchar(100) DEFAULT NULL,
+  `s_email` varchar(100) DEFAULT NULL,
+  `s_phone_mobile` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-        PRIMARY KEY (pk_i_id,fk_i_item_id),
-        FOREIGN KEY (fk_i_item_id) REFERENCES /*TABLE_PREFIX*/t_item (pk_i_id)
-) ENGINE=InnoDB DEFAULT CHARACTER SET 'UTF8' COLLATE 'UTF8_GENERAL_CI';
+
+ALTER TABLE /*TABLE_PREFIX*/t_venue_booking_slots
+  ADD KEY `fk_i_item_id` (`fk_i_item_id`);
 
 
-CREATE TABLE /*TABLE_PREFIX*/t_venue_booking_details (
-    fk_i_booking_slot_id INT UNSIGNED NOT NULL,
-	fk_i_user_id INT UNSIGNED,
-	s_booking_time DATETIME DEFAULT CURRENT_TIMESTAMP,
-    s_name VARCHAR(100),
-	s_email VARCHAR(100),
-	s_phone_mobile VARCHAR(45),
-
-        PRIMARY KEY (fk_i_booking_slot_id),
-        FOREIGN KEY (fk_i_booking_slot_id) REFERENCES /*TABLE_PREFIX*/t_venue_booking_slots (pk_i_id)
-		FOREIGN KEY (fk_i_user_id) REFERENCES /*TABLE_PREFIX*/t_user (pk_i_id)
-) ENGINE=InnoDB DEFAULT CHARACTER SET 'UTF8' COLLATE 'UTF8_GENERAL_CI';
+ALTER TABLE /*TABLE_PREFIX*/t_venue_booking_slots
+ADD CONSTRAINT os_t_venue_booking_slots_ibfk_1 FOREIGN KEY (`fk_i_item_id`) REFERENCES /*TABLE_PREFIX*/t_item (`pk_i_id`);

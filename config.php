@@ -18,7 +18,7 @@ define('DB_PASSWORD', 'password');
 define('DB_HOST', 'localhost');
 
 /** Database Table prefix */
-define('DB_TABLE_PREFIX', 'oc_');
+define('DB_TABLE_PREFIX', 'os_');
 
 define('REL_WEB_URL', '/mysite/');
 

@@ -1,4 +1,4 @@
-<h3><?php _e('Products attributes', 'booking_module') ; ?></h3>
+<h3><?php _e('Manage Booking Slots', 'booking_module') ; ?></h3>
 <table>
     <tr>
         <?php

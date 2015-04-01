@@ -66,6 +66,8 @@
 	<?php if( osc_is_home_page()) { ?>
 	<div class="headermiddle">
 		Which game do you want to play today?
+		
+		<?php echo "Hello Aveek";echo osc_route_url('static-route', array('my-numeric-param' => '12345', 'my-own-param' => 'my-own-value')) ?>
 	</div>
 	<?php } ?>
 	

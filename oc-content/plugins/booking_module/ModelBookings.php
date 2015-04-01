@@ -69,16 +69,7 @@
         public function getTable_BookingSlots()
         {
             return DB_TABLE_PREFIX.'t_venue_booking_slots' ;
-        }
-		
-		/**
-         * Return table name booking details
-         * @return string
-         */
-        public function getTable_BookingDetails()
-        {
-            return DB_TABLE_PREFIX.'t_venue_booking_details' ;
-        }
+        }		
         
         /**
          * Import sql file
@@ -100,7 +91,6 @@
         public function uninstall()
         {
             $this->dao->query('DROP TABLE '. $this->getTable_BookingSlots());
-			$this->dao->query('DROP TABLE '. $this->getTable_BookingDetails());
         }
         
         /**
@@ -131,13 +121,13 @@
          * @param string $make
          * @param string $model 
          */
-        public function insertSlots( $item_id, $date, $time_slot, $price , $quantity)
+        public function insertSlots( $item_id, $date, $time_slot, $price , $court)
         {
             $aSet = array(
                 's_date'  => $date,
                 's_time_slot' => $time_slot,
 				's_price' => $price,
-				's_quantity' => $quantity,
+				's_court' => $court,
                 'fk_i_item_id' => $item_id
                 );
             
@@ -151,13 +141,13 @@
          * @param string $make
          * @param string $model 
          */
-        public function updateSlots($pk_id, $item_id, $date, $time_slot, $price , $quantity)
+        public function updateSlots($pk_id, $item_id, $date, $time_slot, $price , $court)
         {
             $aSet = array(
                 's_date'  => $date,
                 's_time_slot' => $time_slot,
 				's_price' => $price,
-				's_quantity' => $quantity,
+				's_court' => $court,
             );
             
             $aWhere = array( 'pk_i_id'=> $pk_id , 'fk_i_item_id' => $item_id);
@@ -172,7 +162,7 @@
 		*/
 		public function deleteItem($slot_id , $item_id)
         {
-            return $this->dao->delete($this->getTable_BookingSlots(), array('pk_i_id'=> $slot_id, 'fk_i_item_id' => $item_id) ) ;
+            return $this->dao->delete($this->getTable_BookingSlots(), array('pk_i_id'=> $slot_id) ) ;
         }
 		
         
@@ -194,30 +184,20 @@
          * @param string $email
 		 * @param string $phone_mobile
          */
-        public function insertBookingDetails( $slot_id, $user_id, $name, $email, $phone_mobile)
+        public function insertBookingDetails( $slot_id, $name, $email, $phone_mobile)
         {
-			//This should be a transaction...how to do that??
-			
-			$aset = array(
-				's_available' => 0
-			);
-			
-			$aWhere = array(
-				'pk_i_id' => $slot_id
-			);
-			
-			$this->_update($this->getTable_BookingSlots(), $aSet, $aWhere);
-			
-			
-            $aSet = array(
-                'fk_i_booking_slot_id'  => $slot_id,
-                'fk_i_user_id' => $user_id,
+			$aSet = array(
+				's_available' => 0,
 				's_name' => $name,
 				's_email' => $email,
                 's_phone_mobile' => $phone_mobile
                 );
-            
-            return $this->dao->insert( $this->getTable_BookingDetails(), $aSet);
+				
+			$aWhere = array(
+				'pk_i_id' => $slot_id
+			);
+			
+			return $this->_update($this->getTable_BookingSlots(), $aSet, $aWhere);
         }
 		
         // update

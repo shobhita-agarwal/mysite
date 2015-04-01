@@ -2,7 +2,7 @@
 /*
 Plugin Name: Booking module
 Plugin URI: http://www.osclass.org/
-Description: This plugin extends a category of items to store products attributes such as make, model and so on.
+Description: This plugin allows users to make bookings at venues.
 Version: 3.0.1
 Author: OSClass
 Author URI: http://www.osclass.org/
@@ -12,13 +12,25 @@ Plugin update URI: booking_module
 
 require_once 'ModelBookings.php';
 
+function before_page(){
+if(Params::getParam("page")== 'booking') {
+	echo "Welcome to the booking page";
+	
+           // require_once 'My_pluginController.php';
+		//$do = new My_pluginController();
+		//$do->doModel();
+	}
+        exit();
+}
+
+osc_add_hook('before_page', 'before_page');
 
 function booking_call_after_install() {
     // Insert here the code you want to execute after the plugin's install
     // for example you might want to create a table or modify some values
 
     // In this case we'll create a table to store the Example attributes
-    ModelBookings::newInstance()->import('booking_module/struct.sql');
+    //ModelBookings::newInstance()->import('booking_module/struct.sql');
 }
 
 function booking_call_after_uninstall() {

@@ -1,0 +1,4 @@
+[21-Mar-2015 00:19:35 Asia/Kolkata] PHP Fatal error:  Call to protected method Form::generic_input_text() from context '' in C:\Bitnami\wampstack-5.4.37-0\apache2\htdocs\mysite\oc-content\themes\realestate\header.php on line 123
+[21-Mar-2015 00:19:36 Asia/Kolkata] PHP Fatal error:  Call to protected method Form::generic_input_text() from context '' in C:\Bitnami\wampstack-5.4.37-0\apache2\htdocs\mysite\oc-content\themes\realestate\header.php on line 123
+[21-Mar-2015 00:59:06 Asia/Kolkata] PHP Fatal error:  Call to undefined method ItemForm::category_two_select() in C:\Bitnami\wampstack-5.4.37-0\apache2\htdocs\mysite\oc-content\themes\realestate\header.php on line 125
+[21-Mar-2015 00:59:06 Asia/Kolkata] PHP Fatal error:  Call to undefined method ItemForm::category_two_select() in C:\Bitnami\wampstack-5.4.37-0\apache2\htdocs\mysite\oc-content\themes\realestate\header.php on line 125
