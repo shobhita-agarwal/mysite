@@ -131,6 +131,11 @@
                             $do = new CWebContact();
                             $do->doModel();
         break;
+		case ('booking'):   //booking
+                            require_once(osc_lib_path() . 'osclass/controller/booking.php');
+                            $do = new CWebBooking();
+                            $do->doModel();
+        break;
         case ('custom'):   //contact
                             require_once(osc_lib_path() . 'osclass/controller/custom.php');
                             $do = new CWebCustom();
