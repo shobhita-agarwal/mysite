@@ -32,14 +32,14 @@
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
 					$this->_exportVariableToView('item', $item);
-					$this->doView('booking.php');
+					$this->doView('booking_slots.php');
 					break;
-				case('EditBookingVenue'):   //
+				case('ManageBookingSlots'):   //
 					$id = Params::getParam('itemId');
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
 					$this->_exportVariableToView('item', $item);
-					$this->doView('booking.php');
+					$this->doView('booking_slots_edit.php');
 					break;
 				default:
 					echo "You are at booking main page";
