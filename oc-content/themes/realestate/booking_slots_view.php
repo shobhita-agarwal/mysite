@@ -12,31 +12,10 @@
 osc_register_script('jquerydate',"//code.jquery.com/ui/1.11.4/jquery-ui.js" , 'jquery');
 osc_enqueue_script('jquerydate');
 ?>
-<div id="booking-slot-form">
 
-
-	<fieldset class="ui-generic-form">
-	<h2>Add your slot below</h2>
-	<form>
-		<div class="row ui-row-text">
-			<label for="new_slot_date">Date</label>
-			<input style="width:100px" type="text" id="new_slot_date" class="datepicker"></input>
-			<label for="new_slot_time">Time</label>
-			<input style="width:100px" type="text" id="new_slot_time"></input>	
-			<label for="new_slot_court">Court</label>
-			<input style="width:100px" type="text" id="new_slot_court"></input>
-			<label for="new_slot_price">Price</label>
-			<input style="width:100px" type="text" id="new_slot_price"></input>
-			<button class="ui-button ui-button-big" type="submit">Add</button>
-		</div>
-	
-	</form>
-	</fieldset>
-</div>
-
-<br/>
-
+<?php require_once('checkout.php');?>
 <?php require_once('booking_slots.php'); ?>
+
 
 <script>
   $(function() {

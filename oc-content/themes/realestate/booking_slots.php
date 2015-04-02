@@ -1,19 +1,5 @@
-<?php osc_current_web_theme_path('header.php') ; ?>
-
-<div class="content-item">
-            <div id="item-head">
-                <h1 itemprop="itemreviewed"><?php echo osc_item_title().", ". osc_item_city().", ". osc_item_region();?></h1>
-                <div id="type_dates">
-                    <strong><?php echo osc_item_category() ; ?></strong>
-                </div>
-            </div>
-</div>
-<?php
-osc_register_script('jquerydate',"//code.jquery.com/ui/1.11.4/jquery-ui.js" , 'jquery');
-osc_enqueue_script('jquerydate');
-?>
 <div id="booking-table">
-	<div id="date">
+	<div id="date" class="row ui-row-text">
 	Pick a date: <input type="text" value= <?php echo "'".date('d-m-Y')."'"; ?> id="datepicker">
 	</div>
 	
@@ -25,10 +11,23 @@ osc_enqueue_script('jquerydate');
 			for ($i=6;$i<12;$i++){
 				
 			?>
-					<div class="slot">
+			<?php
+					if(osc_is_admin_user_logged_in())
+					{
+						echo "<div class='slot unclickable'>";
+					}else{
+						echo "<div class='slot'>";
+					}
+			?>
 					<a><strong><?php echo $i ?>:00 AM</strong></a>
 					<br>
 					<span id='price'><small>Rs 200</small></span>
+					<?php
+						if(osc_is_admin_user_logged_in())
+						{
+							echo"<br><a class='delete_slot'>Delete</a>";
+						}
+					?>
 					</div>
 			<?php
 				}
@@ -84,24 +83,36 @@ osc_enqueue_script('jquerydate');
     text-align:center;
     padding:5px;
 	width:650px;
-	border-radius:5px
+	border-radius:5px;
 }
 #date.h1{
-	color:white
+	color:white;
+}
+#date input{
+	width:100px;
 }
 #courts {
     float:left;
     padding:10px;	
 	line-height:30px;
     height:300px;
+	width:650px;
 }
 .slot {
-	background-color: rgb(246, 247, 248);
+	background-color: rgb(180, 255, 180);
 	border-radius: 8px;
 	padding-right: 10px;
 	padding-left: 10px;
 	cursor:pointer;
 	margin:10px;
+	float:left;
+}
+.unclickable{
+	cursor:auto;
+}
+.delete_slot{
+	color:red;
+	cursor:pointer;
 }
 .unavailable{
 	opacity:0.3;

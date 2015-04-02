@@ -32,9 +32,14 @@
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
 					$this->_exportVariableToView('item', $item);
-					$this->doView('booking_slots.php');
+					$this->doView('booking_slots_view.php');
 					break;
 				case('ManageBookingSlots'):   //
+					if(!osc_is_admin_user_logged_in())
+					{
+						$this->doView('404.php');
+						break;
+					}
 					$id = Params::getParam('itemId');
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
