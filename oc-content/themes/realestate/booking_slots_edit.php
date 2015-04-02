@@ -104,6 +104,7 @@ osc_enqueue_script('jquerydate');
     padding:10px;	
 	line-height:30px;
     height:300px;
+	width:650px;
 }
 .slot {
 	background-color: rgb(246, 247, 248);
