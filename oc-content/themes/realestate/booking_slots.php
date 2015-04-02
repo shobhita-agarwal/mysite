@@ -95,7 +95,6 @@
     float:left;
     padding:10px;	
 	line-height:30px;
-    height:300px;
 	width:650px;
 }
 .slot {

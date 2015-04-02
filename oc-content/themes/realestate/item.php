@@ -35,6 +35,15 @@
 		
         <div class="content-item" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
             <div id="item-head">
+			<?php
+				if(osc_is_admin_user_logged_in())
+				{
+					echo "<a href= http://localhost/mysite/index.php?page=booking&action=ManageBookingSlots&itemId=".osc_item_id().">Manage slots here</a>";
+				}else{
+					echo "<a href= http://localhost/mysite/index.php?page=booking&action=ViewBookingVenue&itemId=".osc_item_id().">Book slots here</a>";
+				}
+				
+			?>
                 <h1 itemprop="itemreviewed"><?php echo osc_item_title(); ?></h1>
                 <div id="type_dates">
                     <strong><?php echo osc_item_category() ; ?></strong>
