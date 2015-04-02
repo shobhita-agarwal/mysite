@@ -12,9 +12,30 @@
 osc_register_script('jquerydate',"//code.jquery.com/ui/1.11.4/jquery-ui.js" , 'jquery');
 osc_enqueue_script('jquerydate');
 ?>
+<div id="booking-slot-form">
+
+
+	<fieldset>
+	<h2>Add your slot below</h2>
+	<form>
+		<label for="">Date</label>
+		<input type="text" id="new-slot-date" class="datepicker"></input>
+		<label for="">Time</label>
+		<input type="text" id="new-slot-time"></input><br/>
+		<label for="">Court</label>
+		<input type="text" id="new-slot-court"></input>
+		<label for="">Price</label>
+		<input type="text" id="new-slot-price"></input><br/>
+		<button type="submit">Add</button>
+	</form>
+	</fieldset>
+</div>
+
+<br/><br/><br/><br/>
+
 <div id="booking-table">
 	<div id="date">
-	Pick a date: <input type="text" value= <?php echo "'".date('d-m-Y')."'"; ?> id="datepicker">
+	Pick a date: <input type="text" value= <?php echo "'".date('d-m-Y')."'"; ?> id="booking-chart-datepicker" class="datepicker">
 	</div>
 	
 
@@ -110,7 +131,7 @@ osc_enqueue_script('jquerydate');
 
 <script>
   $(function() {
-    $( "#datepicker" ).datepicker({
+    $( ".datepicker" ).datepicker({
 		dateFormat: "dd-mm-yy" , 
 		onSelect: function(dateStr) 
 			{
