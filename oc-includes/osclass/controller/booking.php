@@ -31,10 +31,11 @@
         function doModel()
         {			
 			$id = Params::getParam('itemId');
-			$item = Item::newInstance()->findByPrimaryKey($id);
 			
             switch($this->action) {
-                case('ViewBookingVenue'):   //View the slots and eable booking				
+                case('ViewBookingVenue'):   //View the slots and eable booking
+					$item = Item::newInstance()->findByPrimaryKey($id);
+				
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_view.php');
 					break;
@@ -60,10 +61,16 @@
 						echo osc_add_flash_error_message("Sorry! could not add slot, try again.");
 					}
 					
-					
 				case('ManageBookingSlots'):   //Manage the booking slots
+					$item = Item::newInstance()->findByPrimaryKey($id);
+					
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_edit.php');
+					break;
+				case('GetSlots'): //Get booking slots of a venue in JSON format
+					$slots = $this->bookingManager->getBookingSlotsByItemId($id);
+					header('Content-Type: application/json');
+					echo json_encode($slots);
 					break;
 				default:
 					echo "You are at booking main page";

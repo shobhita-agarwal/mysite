@@ -24,7 +24,7 @@ define('REL_WEB_URL', '/mysite/');
 
 define('WEB_PATH', 'http://localhost/mysite/');
 
-//define('OSC_DEBUG_DB' , true)
-define('OSC_DEBUG', true) ;
+//define('OSC_DEBUG_DB' , true);
+//define('OSC_DEBUG', true) ;
 
 ?>

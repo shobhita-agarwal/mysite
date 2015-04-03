@@ -94,16 +94,34 @@
         }
         
         /**
-         * Get booking slots given a item id 
+         * Get booking slots given a item id , optional : date , time , court
          *
          * @param int $item_id
          * @return array
          */
-        public function getBookingSlotsByItemId( $item_id )
+        public function getBookingSlotsByItemId( $item_id , $date ='' , $time ='' , $court ='' )
         {
             $this->dao->select();
             $this->dao->from( $this->getTable_BookingSlots() );
-            $this->dao->where('fk_i_item_id', $item_id );
+			$where_clause = "`fk_i_item_id` = $item_id";
+			
+			if($date !='')
+			{
+				$where_clause = $where_clause . "and `s_date` = $date";
+			}
+			if($time !='')
+			{
+				$where_clause = $where_clause . "and `s_time_slot` = $time";
+			}
+			if($court !='')
+			{
+				$where_clause = $where_clause . "and `s_court` = $court";
+			}
+            
+			$this->dao->where($where_clause);
+			$this->dao->orderBy('s_court');
+			$this->dao->orderBy('s_date');
+			$this->dao->orderBy('s_time_slot');
             
             $result = $this->dao->get();
             
@@ -157,10 +175,9 @@
 		
 		/**
 		* Delete a slot given the slot id and the item id
-		* @param type $item_id
 		* @param type $slot_id
 		*/
-		public function deleteItem($slot_id , $item_id)
+		public function deleteItem($slot_id)
         {
             return $this->dao->delete($this->getTable_BookingSlots(), array('pk_i_id'=> $slot_id) ) ;
         }
