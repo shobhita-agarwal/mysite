@@ -18,31 +18,50 @@
 
     class CWebBooking extends BaseModel
     {
+		private $bookingManager;
+		
         function __construct()
         {
             parent::__construct();
+			
+			$this->bookingManager = Booking::newInstance();
         }
 
         //Business Layer...
         function doModel()
         {			
+			$id = Params::getParam('itemId');
+			$item = Item::newInstance()->findByPrimaryKey($id);
+			
             switch($this->action) {
-                case('ViewBookingVenue'):   //
-					$id = Params::getParam('itemId');
-					$item = Item::newInstance()->findByPrimaryKey($id);
-					
+                case('ViewBookingVenue'):   //View the slots and eable booking				
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_view.php');
 					break;
-				case('ManageBookingSlots'):   //
+				case('AddNewSlot')://Add a new slot and then fall through to manage
+					osc_csrf_check();
 					if(!osc_is_admin_user_logged_in())
 					{
 						$this->doView('404.php');
 						break;
 					}
-					$id = Params::getParam('itemId');
-					$item = Item::newInstance()->findByPrimaryKey($id);
 					
+					$new_slot_date = Params::getParam('new_slot_date');
+					$new_slot_time = Params::getParam('new_slot_time');
+					$new_slot_court = Params::getParam('new_slot_court');
+					$new_slot_price = Params::getParam('new_slot_price');
+					
+					$result = $this->bookingManager->insertSlots($id, $new_slot_date, $new_slot_time, $new_slot_price , $new_slot_court);
+					
+					if($result)
+					{
+						echo osc_add_flash_ok_message("Successfully added the slot : $new_slot_date , $new_slot_time , $new_slot_court @ Rs $new_slot_price ");
+					}else{
+						echo osc_add_flash_error_message("Sorry! could not add slot, try again.");
+					}
+					
+					
+				case('ManageBookingSlots'):   //Manage the booking slots
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_edit.php');
 					break;
