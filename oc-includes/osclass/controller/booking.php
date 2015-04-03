@@ -31,6 +31,10 @@
         function doModel()
         {			
 			$id = Params::getParam('itemId');
+			if($id == ''){
+				$this->doView('404.php');
+				return;
+			}
 			
             switch($this->action) {
                 case('ViewBookingVenue'):   //View the slots and eable booking
@@ -67,7 +71,7 @@
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_edit.php');
 					break;
-				case('GetSlots'): //Get booking slots of a venue in JSON format
+				case('GetSlots'): //Get booking slots of a venue in JSON format					
 					$court = Params::getParam('court');
 					$date = Params::getParam('date');
 					$time = Params::getParam('time');
