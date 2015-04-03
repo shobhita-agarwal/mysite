@@ -92,6 +92,24 @@
         {
             $this->dao->query('DROP TABLE '. $this->getTable_BookingSlots());
         }
+		
+		/**
+		* Get number of courts at a venue given the itemid
+		*
+		* @param int $item_id
+		* @return int
+		*/
+		public function getNumberofCourtsByItemId( $item_id )
+		{
+			$this->dao->select("COUNT(DISTINCT s_court) as total");
+			$this->dao->from( $this->getTable_BookingSlots() );
+			$where_clause = "`fk_i_item_id` = $item_id";
+			$this->dao->where($where_clause);
+			
+			$result = $this->dao->get();
+            
+            return $result->result()[0]['total'];
+		}
         
         /**
          * Get booking slots given a item id , optional : date , time , court
@@ -99,23 +117,23 @@
          * @param int $item_id
          * @return array
          */
-        public function getBookingSlotsByItemId( $item_id , $date ='' , $time ='' , $court ='' )
+        public function getBookingSlotsByItemId( $item_id , $court ='', $date ='' , $time ='' )
         {
             $this->dao->select();
             $this->dao->from( $this->getTable_BookingSlots() );
 			$where_clause = "`fk_i_item_id` = $item_id";
 			
+			if($court !='')
+			{
+				$where_clause = $where_clause . " and `s_court` = '$court' ";
+			}
 			if($date !='')
 			{
-				$where_clause = $where_clause . "and `s_date` = $date";
+				$where_clause = $where_clause . " and `s_date` = '$date'";
 			}
 			if($time !='')
 			{
-				$where_clause = $where_clause . "and `s_time_slot` = $time";
-			}
-			if($court !='')
-			{
-				$where_clause = $where_clause . "and `s_court` = $court";
+				$where_clause = $where_clause . " and `s_time_slot` = '$time'";
 			}
             
 			$this->dao->where($where_clause);

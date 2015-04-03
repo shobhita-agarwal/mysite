@@ -68,7 +68,22 @@
 					$this->doView('booking_slots_edit.php');
 					break;
 				case('GetSlots'): //Get booking slots of a venue in JSON format
-					$slots = $this->bookingManager->getBookingSlotsByItemId($id);
+					$court = Params::getParam('court');
+					$date = Params::getParam('date');
+					$time = Params::getParam('time');
+					
+					if($court != ''){
+						$slots = $this->bookingManager->getBookingSlotsByItemId($id , $court , $date , $time);
+					} else{
+						$courts = $this->bookingManager->getNumberofCourtsByItemId($id);
+						$slots = array();
+						for($i=1;$i<=$courts ; $i++)
+						{
+							$court_str = "Court$i";
+							$slots[$court_str] = $this->bookingManager->getBookingSlotsByItemId($id , $court_str , $date , $time);
+						}
+					}
+					
 					header('Content-Type: application/json');
 					echo json_encode($slots);
 					break;

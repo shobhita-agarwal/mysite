@@ -2,6 +2,7 @@
 
 <div class="content-item">
             <div id="item-head">
+				<a href=<?php  echo "'".osc_item_url()."'"; ?> > < Back to details</a>
                 <h1 itemprop="itemreviewed"><?php echo osc_item_title().", ". osc_item_city().", ". osc_item_region();?></h1>
                 <div id="type_dates">
                     <strong><?php echo osc_item_category() ; ?></strong>
@@ -27,7 +28,7 @@ osc_enqueue_script('jquerydate');
 			<label for="new_slot_time">Time</label>
 			<input style="width:100px" type="text" id="new_slot_time" name="new_slot_time"></input>	
 			<label for="new_slot_court">Court</label>
-			<input style="width:100px" type="text" name="new_slot_court"></input>
+			<input style="width:100px" type="text" id="new_slot_court" name="new_slot_court"></input>
 			<label for="new_slot_price">Price</label>
 			<input style="width:100px" type="text" name="new_slot_price" ></input>
 			<button class="ui-button ui-button-big" type="submit">Add</button>
@@ -50,12 +51,20 @@ osc_enqueue_script('jquerydate');
 			}
 		} );
 	var availableTimes = [
-	  "1:00AM","2:00AM","3:00AM","4:00AM","5:00AM","6:00AM","7:00AM","8:00AM",
-	  "9:00AM","10:00AM","11:00AM","12:00AM","1:00PM","2:00PM","3:00PM","4:00PM",
-	  "5:00PM","6:00PM","7:00PM","8:00PM","9:00PM","10:00PM","11:00PM","12:00PM",
+	  "01:00AM","02:00AM","03:00AM","04:00AM","05:00AM","06:00AM","07:00AM","08:00AM",
+	  "09:00AM","10:00AM","11:00AM","12:00AM","01:00PM","02:00PM","03:00PM","04:00PM",
+	  "05:00PM","06:00PM","07:00PM","08:00PM","09:00PM","10:00PM","11:00PM","12:00PM",
     ];
 	$( "#new_slot_time" ).autocomplete({
       source: availableTimes
+    });
+	var availableCourts = [
+		"Court1","Court2","Court3","Court4","Court5","Court6",
+		"Court7","Court8","Court9","Court10","Court11","Court12",
+		"Field1","Field2","Field3","Field4","Field5","Field6",
+	];
+	$( "#new_slot_court" ).autocomplete({
+      source: availableCourts
     });
   });
   </script>
