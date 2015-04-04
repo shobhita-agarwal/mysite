@@ -14,25 +14,23 @@ osc_register_script('jquerydate',"//code.jquery.com/ui/1.11.4/jquery-ui.js" , 'j
 osc_enqueue_script('jquerydate');
 ?>
 
-<?php require_once('checkout.php');?>
+<?php //require_once('checkout.php');?>
 <?php require_once('booking_slots.php'); ?>
 
-
-<script>
-  $(function() {
-    $( "#new_slot_date" ).datepicker({
-		dateFormat: "dd-mm-yy" , 
-		onSelect: function(dateStr) 
-			{
-				alert($(this).val());
-			}
-		} )
-		
-  });
-  </script>
+<div id="order_summary"></div>
   
   
-  <div class="clear"></div>
+<div class="clear"></div>
 </div>
-  <?php osc_current_web_theme_path('footer.php') ; ?>
+
+<style>
+#order_summary{
+	position:fixed;
+	right:15px;
+	bottom:5px;
+	width:250px;
+}
+</style>
+
+<?php osc_current_web_theme_path('footer.php') ; ?>
     

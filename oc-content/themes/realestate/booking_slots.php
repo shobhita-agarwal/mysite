@@ -52,6 +52,9 @@
 	opacity:0.3;
 	cursor:auto;
 }
+.selected{
+	background-color: rgb(180,200,20);
+}
 .slots-container_not_used{
 	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
 	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -62,11 +65,13 @@
 </style>
 
 <script>
+  var available_slots = {};
+  var selected_slots = {};
 
-	//on page load get the slots for present day
-	getSlots( $( "#datepicker" ).val() , displayBookingslots);
-	
-	//assign the datepicker
+  //on page load get the slots for present day
+  getSlots( $( "#datepicker" ).val() , displayBookingslots);
+  
+  //assign the datepicker
   $(function() {
     $( "#datepicker" ).datepicker({
 		//minDate: 0 ,
@@ -99,10 +104,8 @@
 		</div>
 	</div>
   */
-  //var g_slots;
   function displayBookingslots(bookingslots){
 	  var count_available = 0;
-	  //g_slots = bookingslots;
 	  
 	  $('#courts').html(''); //clear the div initially
 	  
@@ -114,8 +117,13 @@
 			  if(slots[i].s_available == 1)
 			  {
 				  count_available++;
+				  //insert into available_slots
+				  available_slots[slots[i].pk_i_id ] = slots[i];
+				  
 					html = html				  
-							+ "<div class='slot'>"
+							+ "<div class='slot' id='" + slots[i].pk_i_id +"' "
+							+ "onClick='addToCart(this.id);'"
+							+">"
 							+ "<a><strong>"
 							+ slots[i].s_time_slot
 							+"</strong></a>"
@@ -147,4 +155,35 @@
   function dateSort (a, b) {
 	  return new Date('1970/01/01 ' + a.s_time_slot) - new Date('1970/01/01 ' + b.s_time_slot);
 	};
+	
+  function addToCart(id){
+	  //alert(available_slots[id].s_price);
+	  var d = document.getElementById(id);
+		if(d.className == "slot selected")
+		{
+			//if already selected , remove
+			d.className = "slot";
+			delete selected_slots[id];
+		}else{
+			//else , add to cart
+			d.className = d.className + " selected";
+			selected_slots[id] = available_slots[id];
+		}
+		
+	  $("#order_summary").html("");
+	  
+	  count = 0;
+	  for (i in selected_slots){
+		  count ++;
+		  html = "<div style='margin:0 0 10px 0;'>"
+		  + "<strong >Rs "
+		  + selected_slots[i].s_price
+		  + "</strong>,"
+		  + selected_slots[i].s_court + ", "+selected_slots[i].s_date+ ", " + selected_slots[i].s_time_slot
+		  + "</div>" ;
+				   
+		  $("#order_summary").append(html);
+		  console.log(count);
+	  }
+  }
   </script>
