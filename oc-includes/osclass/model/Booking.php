@@ -99,16 +99,29 @@
 		* @param int $item_id
 		* @return int
 		*/
-		public function getNumberofCourtsByItemId( $item_id )
+		public function getCourtsByItemId( $item_id , $date = '')
 		{
-			$this->dao->select("COUNT(DISTINCT s_court) as total");
+			$this->dao->select(" DISTINCT s_court");
 			$this->dao->from( $this->getTable_BookingSlots() );
 			$where_clause = "`fk_i_item_id` = $item_id";
+			if($date !='')
+			{
+				$where_clause = $where_clause . " and `s_date` = '$date'";
+			}
 			$this->dao->where($where_clause);
 			
 			$result = $this->dao->get();
             
-            return $result->result()[0]['total'];
+            if( !$result ) {
+                return array();
+            }
+            $courts = array();
+			$result = $result->result();
+            foreach ( $result as $court){
+				array_push($courts , $court['s_court']);
+			}
+			
+			return $courts;
 		}
         
         /**

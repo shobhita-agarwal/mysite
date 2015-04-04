@@ -61,6 +61,7 @@ osc_enqueue_script('jquerydate');
 		"Court1","Court2","Court3","Court4","Court5","Court6",
 		"Court7","Court8","Court9","Court10","Court11","Court12",
 		"Field1","Field2","Field3","Field4","Field5","Field6",
+		"Track1","Track2","Track3","Track4",
 	];
 	$( "#new_slot_court" ).autocomplete({
       source: availableCourts

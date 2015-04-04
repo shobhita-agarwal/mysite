@@ -79,12 +79,11 @@
 					if($court != ''){
 						$slots = $this->bookingManager->getBookingSlotsByItemId($id , $court , $date , $time);
 					} else{
-						$courts = $this->bookingManager->getNumberofCourtsByItemId($id);
+						$courts = $this->bookingManager->getCourtsByItemId($id , $date);
 						$slots = array();
-						for($i=1;$i<=$courts ; $i++)
+						foreach($courts as $court)
 						{
-							$court_str = "Court$i";
-							$slots[$court_str] = $this->bookingManager->getBookingSlotsByItemId($id , $court_str , $date , $time);
+							$slots[$court] = $this->bookingManager->getBookingSlotsByItemId($id , $court , $date , $time);
 						}
 					}
 					
