@@ -56,15 +56,19 @@
 					$new_slot_court = Params::getParam('new_slot_court');
 					$new_slot_price = Params::getParam('new_slot_price');
 					
-					$result = $this->bookingManager->insertSlots($id, $new_slot_date, $new_slot_time, $new_slot_price , $new_slot_court);
-					
-					if($result)
+					if($new_slot_date == "" || $new_slot_time == "" || $new_slot_court == "" || $new_slot_price == "")
 					{
-						echo osc_add_flash_ok_message("Successfully added the slot : $new_slot_date , $new_slot_time , $new_slot_court @ Rs $new_slot_price ");
-					}else{
-						echo osc_add_flash_error_message("Sorry! could not add slot, try again.");
+						echo osc_add_flash_error_message("Date , Time , Court and Price are compulsory! One is missing! Try again!");
+					} else{
+						$result = $this->bookingManager->insertSlots($id, $new_slot_date, $new_slot_time, $new_slot_price , $new_slot_court);
+						
+						if($result)
+						{
+							echo osc_add_flash_ok_message("Successfully added the slot : $new_slot_date , $new_slot_time , $new_slot_court @ Rs $new_slot_price ");
+						}else{
+							echo osc_add_flash_error_message("Sorry! could not add slot, try again.");
+						}
 					}
-					
 				case('ManageBookingSlots'):   //Manage the booking slots
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
