@@ -175,11 +175,11 @@
 	  count = 0;
 	  for (i in selected_slots){
 		  count ++;
-		  html = "<div style='margin:0 0 10px 0;'>"
-		  + "<strong >Rs "
-		  + selected_slots[i].s_price
-		  + "</strong>,"
+		  html = "<div class='order_li'>"
 		  + selected_slots[i].s_court + ", "+selected_slots[i].s_date+ ", " + selected_slots[i].s_time_slot
+		  + ", <strong >Rs "
+		  + selected_slots[i].s_price
+		  + "</strong>"
 		  + "</div>" ;
 				   
 		  $("#order_summary").append(html);
