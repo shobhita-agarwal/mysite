@@ -157,7 +157,7 @@
 	};
 	
   function addToCart(id){
-	  //alert(available_slots[id].s_price);
+	  var order_total = 0;
 	  var d = document.getElementById(id);
 		if(d.className == "slot selected")
 		{
@@ -183,7 +183,12 @@
 		  + "</div>" ;
 				   
 		  $("#order_summary").append(html);
-		  console.log(count);
+		  
+		  order_total += +selected_slots[i].s_price;
 	  }
+	  
+	  //finally show the total
+	  html_total = "<hr/>Rs " + order_total;
+	  $("#order_summary_total").html(html_total);
   }
   </script>

@@ -22,6 +22,8 @@ osc_enqueue_script('jquerydate');
 	<hr/>
 	<div id="order_summary">
 	</div>
+	<div id="order_summary_total">
+	</div>
 	<div id="checkout_pay">
 		<a href="">Proceed to pay</a>
 	</div>
@@ -40,6 +42,11 @@ osc_enqueue_script('jquerydate');
 }
 #order_summary{
 	
+}
+#order_summary_total{
+	text-align : right;
+	color:black;
+	font-size:2em;
 }
 #checkout_pay{
 	font-size:2em;
