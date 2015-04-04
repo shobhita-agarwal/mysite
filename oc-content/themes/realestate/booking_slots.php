@@ -1,6 +1,14 @@
+<?php 
+	if(View::newInstance()->_exists('date')) {
+		$date = View::newInstance()->_get('date');
+	} else {
+		$date =  null; 
+	}
+?>
+
 <div id="booking-table">
 	<div id="date" class="row ui-row-text">
-	Pick a date: <input type="text" value= <?php echo "'".date('d-m-Y')."'"; ?> id="datepicker">
+	Pick a date: <input type="text" value= <?php echo $date; ?> id="datepicker">
 	</div>
 	
 
@@ -106,7 +114,9 @@
 		dateFormat: "dd-mm-yy" , 
 		onSelect: function(dateStr) 
 			{
-				getSlots(dateStr , displayBookingslots);
+				//getSlots(dateStr , displayBookingslots);
+				//set the selected date to the url also , so that the value can be persisted
+				document.location.search = updateQueryStringParameter(document.location.search , 'date' ,$( "#datepicker" ).val() ) ;
 			}
 		} );
   });
@@ -185,6 +195,16 @@
 	  return new Date('1970/01/01 ' + a.s_time_slot) - new Date('1970/01/01 ' + b.s_time_slot);
 	};
 	
+  function updateQueryStringParameter(uri, key, value) {
+	  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+	  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+	  if (uri.match(re)) {
+		return uri.replace(re, '$1' + key + "=" + value + '$2');
+	  }
+	  else {
+		return uri + separator + key + "=" + value;
+	  }
+	}
   function addToCart(id){
 	  var order_total = 0;
 	  var d = document.getElementById(id);

@@ -38,9 +38,16 @@
 			
             switch($this->action) {
                 case('ViewBookingVenue'):   //View the slots and eable booking
+					$date = Params::getParam('date');
+					
+					if($date == ""){
+						$date = date('d-m-Y');
+					}
+					
 					$item = Item::newInstance()->findByPrimaryKey($id);
 				
 					$this->_exportVariableToView('item', $item);
+					$this->_exportVariableToView('date', $date);
 					$this->doView('booking_slots_view.php');
 					break;
 				case('DeleteSlot'): //only admin access
@@ -86,6 +93,11 @@
 						}
 					}
 				case('ManageBookingSlots'):   //Manage the booking slots
+					if(!osc_is_admin_user_logged_in())
+					{
+						$this->redirectTo( osc_base_url(). "?page=booking&action=ViewBookingVenue&itemId=" . $id );
+						break;
+					}
 					$item = Item::newInstance()->findByPrimaryKey($id);
 					
 					$this->_exportVariableToView('item', $item);
