@@ -99,8 +99,14 @@
 						break;
 					}
 					$item = Item::newInstance()->findByPrimaryKey($id);
+					$date = Params::getParam('date');
+					
+					if($date == ""){
+						$date = date('d-m-Y');
+					}
 					
 					$this->_exportVariableToView('item', $item);
+					$this->_exportVariableToView('date', $date);
 					$this->doView('booking_slots_edit.php');
 					break;
 				case('GetSlots'): //Get booking slots of a venue in JSON format					
