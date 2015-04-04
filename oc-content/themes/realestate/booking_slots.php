@@ -9,6 +9,18 @@
 	
 </div>
 
+<div id="order_summary_container" class="ui-content-box right">
+	<h2>Your selected slots</h2>
+	<hr/>
+	<div id="order_summary">
+	</div>
+	<div id="order_summary_total">
+	</div>
+	<div id="checkout_pay">
+		<a href="">Proceed to pay</a>
+	</div>
+</div>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <style>
 #date {
@@ -55,12 +67,27 @@
 .selected{
 	background-color: rgb(180,200,20);
 }
-.slots-container_not_used{
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	display: -ms-flexbox;      /* TWEENER - IE 10 */
-	display: -webkit-flex;     /* NEW - Chrome */
-	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+.right{
+	float:right;
+}
+.order_li{
+	margin:0 0 15px 0;
+}
+#order_summary{
+	
+}
+#order_summary_total{
+	text-align : right;
+	color:black;
+	font-size:2em;
+}
+#checkout_pay{
+	font-size:2em;
+	text-align : center;
+	background:#239ab5;
+}
+#checkout_pay a{
+	color:white;
 }
 </style>
 
@@ -134,7 +161,9 @@
 								//if admin is logged in, give him the option to delete the slot
 								if(osc_is_admin_user_logged_in())
 								{
-									echo'+"<br><a class=\'delete_slot\'>Delete</a>"';
+							?>
+							+ "<br><a class='delete_slot' href='index.php?page=booking&action=DeleteSlot&itemId="+ slots[i].fk_i_item_id + "&slotId="+ slots[i].pk_i_id +"'>Delete</a>"
+							<?php
 								}
 							?>
 							+"</small></span>"

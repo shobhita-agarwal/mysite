@@ -33,7 +33,9 @@ osc_enqueue_script('jquerydate');
 			<button class="ui-button ui-button-big" type="submit">Add</button>
 		</div>
 	</form>
+	<span style="color:red">*All fields are compulsory</span>
 	</fieldset>
+	
 </div>
 
 <br/>

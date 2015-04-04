@@ -43,6 +43,22 @@
 					$this->_exportVariableToView('item', $item);
 					$this->doView('booking_slots_view.php');
 					break;
+				case('DeleteSlot'): //only admin access
+					if(!osc_is_admin_user_logged_in())
+					{
+						$this->doView('404.php');
+						break;
+					}
+					$slotid = Params::getParam('slotId');
+					$success = $this->bookingManager->deleteItem($slotid);
+					if($success) {
+						osc_add_flash_ok_message( _m('The slot has been deleted') );
+					} else {
+						osc_add_flash_error_message( _m("The slot you are trying to delete couldn't be deleted") );
+					}
+					//redirect to manage item page
+					$this->redirectTo( osc_base_url(). "?page=booking&action=ManageBookingSlots&itemId=" . $id );
+					break;
 				case('AddNewSlot')://Add a new slot and then fall through to manage
 					osc_csrf_check();
 					if(!osc_is_admin_user_logged_in())

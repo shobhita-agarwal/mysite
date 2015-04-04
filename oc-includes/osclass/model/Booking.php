@@ -94,7 +94,7 @@
         }
 		
 		/**
-		* Get number of courts at a venue given the itemid
+		* Get names of courts at a venue given the itemid
 		*
 		* @param int $item_id
 		* @return int
@@ -205,22 +205,44 @@
         }
 		
 		/**
-		* Delete a slot given the slot id and the item id
+		* Delete a slot given the slot id and the item id , delete only if the slot is not booked
 		* @param type $slot_id
 		*/
 		public function deleteItem($slot_id)
         {
-            return $this->dao->delete($this->getTable_BookingSlots(), array('pk_i_id'=> $slot_id) ) ;
+			$this->dao->select();
+            $this->dao->from( $this->getTable_BookingSlots() );
+			$where_clause = "`pk_i_id` = $slot_id";
+			$this->dao->where($where_clause);
+			$result = $this->dao->get();
+			
+			if(!$result)
+			{
+				//Item does not exist , so can't delete
+				return 0;
+			}
+			
+			$result = $result->result();
+			if($result)
+			{
+				$available = $result[0]['s_available'];
+				
+				if($available ==1)
+				{
+					return $this->dao->delete($this->getTable_BookingSlots(), array('pk_i_id'=> $slot_id) ) ;
+				}
+			}
+            return 0;
         }
 		
         
          /**
-         * Delete all slots given an item id
+         * Delete all slots given an item id, do nothing for safety
          * @param type $item_id 
          */
         public function deleteAllItem($item_id)
         {
-            return $this->dao->delete($this->getTable_BookingSlots(), array('fk_i_item_id' => $item_id) ) ;
+            //return $this->dao->delete($this->getTable_BookingSlots(), array('fk_i_item_id' => $item_id) ) ;
         }
         
 		/**
