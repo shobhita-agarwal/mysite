@@ -144,11 +144,11 @@
 		  html = html + "</div><div class='clear'></div>";
 		  
 		  $('#courts').append(html);
-		  
-		  if(count_available == 0)
-		  {
-			  $('#courts').html("<h2>Sorry , no slots available for your choice of date!</h2>");
-		  }
+	  }
+	  
+	  if(count_available == 0)
+	  {
+		  $('#courts').html("<h2>Sorry , no slots available for your choice of date!</h2>");
 	  }
   }
   
