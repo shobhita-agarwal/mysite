@@ -12,7 +12,7 @@ define('DB_NAME', 'osclass');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password');
+define('DB_PASSWORD', 'universe');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
